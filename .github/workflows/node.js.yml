@@ -5,6 +5,11 @@ name: publish-release
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag for release'
+        required: true
+        type: string
   
 jobs:
   build:
@@ -43,6 +48,7 @@ jobs:
     - name: Publish release
       uses: softprops/action-gh-release@v3
       with:
+        tag_name: ${{ inputs.tag }}
         files: |
             build.zip
       env:
