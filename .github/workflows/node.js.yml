@@ -38,13 +38,13 @@ jobs:
       uses: actions/download-artifact@v5
       with:
         name: build
-    - name: Package up files
-      run: tar -czvf build.tar.gz build
+    # - name: Package up files
+    #   run: tar -czvf build.tar.gz build
     - name: Publish release
       uses: softprops/action-gh-release@v3
       with:
         files: |
-            build.tar.gz
+            build.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
