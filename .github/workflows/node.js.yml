@@ -44,7 +44,7 @@ jobs:
     - name: Download the build folder
       uses: actions/download-artifact@v5
       with:
-        name: build
+        name: build.zip
     # - name: Package up files
     #   run: tar -czvf build.tar.gz build
     - name: Publish release
