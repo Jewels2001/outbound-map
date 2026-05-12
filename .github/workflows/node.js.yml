@@ -45,14 +45,16 @@ jobs:
       uses: actions/download-artifact@v5
       with:
         name: build
-    # - name: Package up files
-    #   run: tar -czvf build.tar.gz build
+        path: build
+    - name: Package up files
+      run: zip -r build.zip build
     - name: Publish release
       uses: softprops/action-gh-release@v3
       with:
         tag_name: ${{ inputs.tag }}
+        fail_on_unmatched_files: true
         files: |
-            build
+            build.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
